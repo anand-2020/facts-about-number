@@ -1,0 +1,176 @@
+<html>
+  <head>
+        <title>Number Fact</title>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+        <style>
+            .bodycss{
+    
+    font-size:20px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/*header{
+    
+    margin-left:-2cm;
+    margin-right:-2cm;
+
+    
+}*/
+.top{
+    background-color:rgb(89, 89, 247);
+    border-top-right-radius: 50px;
+    box-shadow: 0px 10px rgba(3, 14, 161, 0.856);
+    
+    text-align: center;
+    
+    color: white;
+    font-size:60px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    
+}
+#value1, #answer, #factors, #primefactors{
+
+    width: 100%;
+    
+    margin: 5px 5px;
+   /* box-sizing: border-box; */ 
+   /* border: 4px solid #8842d5;*/
+   outline:none;
+   border-radius: 7px;
+    font-size:20px;
+    display: block; 
+             
+            
+    border-top:none;
+    border-right:none;
+    border-bottom:none;
+    border-left-width:0.3cm;
+    border-left-color:rgb(14, 140, 243);
+    border-left-style:groove;
+    padding:0.5cm;
+    background-color: rgb(190, 230, 233);
+}
+#value1:hover, #answer:hover, #factors:hover, #primefactors:hover, #primenumbers:hover{
+    background-color: rgb(147, 232, 238);
+    border-top-style:solid;
+    border-top-color:rgb(0, 0, 0);
+     }
+
+#primenumbers{
+            
+            width:100%;
+            resize:both;
+            font-size:16px;
+            outline:none;
+            border-top:none;
+    border-right:none;
+    border-bottom:none;
+    border-left-width:0.3cm;
+    border-left-color:rgb(14, 140, 243);
+    border-left-style:groove;
+    padding-top:0.3cm;
+    padding-bottom:0.3cm;
+    border-radius: 7px;
+    background-color: rgb(190, 230, 233);
+}
+#factors{
+    
+    resize:both;
+}
+#noprime{ 
+    outline:none;
+          width:2cm;
+          text-align:center;
+          font-size:18px;
+          border-top:none;
+    border-right:none;
+    border-left:none;
+          border-bottom-color:rgb(250, 92, 75);
+          }
+footer{
+      background-color:palegreen;
+      text-align:center;
+      
+      margin-bottom:-1cm;
+      
+      padding-top:0.005cm;
+      padding-bottom:0.05cm;
+      font-size: 14px;
+      border-top-left-radius: 10cm;
+      border-top-right-radius: 10cm;
+}
+.credit{
+      background-color:rgb(194, 243, 194);
+      border-radius:12px;
+      margin-left:1cm;
+      margin-bottom:0.2cm;
+      margin-right:1cm;
+      padding: 5px 5px;
+      
+
+}
+        </style>
+        <script language="javascript">
+                function factsNumbers()
+                {
+                        var val1 = parseInt(document.getElementById("value1").value);
+                        var ansD = document.getElementById("answer");
+                        var facto = document.getElementById("factors");
+                        var pfacto = document.getElementById("primefactors");
+                        var prime = document.getElementById("primenumbers");
+                        var numprime = document.getElementById("noprime");
+                        facto.value=' 1 ';
+                        pfacto.value=' ';
+                        prime.value=' ';
+                        var flag=0;
+                       /* var check;*/
+                        var count=0;
+                        var next=0;
+                        if(val1==1)
+                        {
+                            ansD.value='NEITHER PRIME NOR COMPOSITE';
+                        }
+                        else{
+                        for(let i=2;i<val1;i++)
+                        {
+                            next=0;
+                            for(let k=2;k<=i/2;k++)
+                            {
+                                if(i%k==0) {next=1; break;}
+                            }
+                            if(next==0) { count++; prime.value += i + ' ';  }
+                            
+                           
+                            if(val1%i==0)
+                            { ansD.value='NOT PRIME'; flag=1;
+                              facto.value += i + ' ';
+                             /* check=0;
+                              for(let j=2;j<i;j++)
+                              {
+                                  if(i%j==0) {check=1; break; }
+                              } */
+                              if(next==0) pfacto.value += i + ' ';
+                            } 
+                        }
+                        if(flag==0) { ansD.value='PRIME'; facto.value+= val1; pfacto.value+= val1;} }
+                        numprime.value=count;
+                        
+                }
+        </script>
+  </head>
+  <body class="bodycss">
+       <header> <h1 class="top">NUM  FACT</h1> </header>
+        <p>Enter any natural number</p>
+        <input type="number" id="value1" name="value1" value=""/>
+        <input class="submit" type="button" name="Sumbit" value="Click here" onclick="javascript:factsNumbers()"/> <br>
+        <br><input readonly type="text" id="answer" name="answer" value=""/><br><br>
+        Factors<br> <textarea readonly type="text" id="factors" name="factors" value=""></textarea><br><br>
+        Prime factors<br> <input readonly type="text" id="primefactors" name="primefactors" value=""/> <br><br>
+        Prime numbers before the entered number<br> <textarea readonly type="text" id="primenumbers" name="primenumbers" value=""></textarea> <br>
+        <br>There are <input readonly type="text" id="noprime" name="noprime" value=""/> prime numbers before the entered number
+        <br><br><br>
+        <footer>
+           <p class="credit"> webpage developed by anand</p>
+        </footer>
+  </body>
+</html>
